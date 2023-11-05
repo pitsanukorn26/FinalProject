@@ -21,7 +21,11 @@
         {
             <tr>
                 <td>@item.EmailSender</td>
-                <td><a href="ReadEmail?emailid=@item.EmailID">@item.EmailSubject</a></td>
+                <td>
+                    @if (item.EmailIsRead.Equals("0")) {
+                        <img src="images/yellow.gif" height="10pt"> 
+                    } 
+                    <a href="ReadEmail?emailid=@item.EmailID">@item.EmailSubject</a></td>
                 <td>@item.EmailDate</td>
                 <td>
                     <a class="btn btn-primary btn-sm" href="DeleteEmail?emailid=@item.EmailID">Delete</a>

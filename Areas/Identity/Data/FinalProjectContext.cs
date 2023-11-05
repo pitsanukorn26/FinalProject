@@ -30,6 +30,5 @@ public class FinalProjectUserEntityConfiguration: IEntityTypeConfiguration<Final
         builder.Property(u => u.FirstName).HasMaxLength(255);
         builder.Property(u => u.LastName).HasMaxLength(255);
         builder.Property(u => u.MobilePhone).HasMaxLength(255);
-        builder.Property(u => u.UserName).HasMaxLength(255);
     }
 }

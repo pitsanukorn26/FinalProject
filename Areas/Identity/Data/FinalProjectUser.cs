@@ -13,6 +13,5 @@ public class FinalProjectUser : IdentityUser
     public string LastName { get; set; }
     public string MobilePhone { get; set; }
 
-    public string UserName { get; set; }
 }
 

@@ -27,7 +27,14 @@ namespace FinalProject.Pages
                 {
                     connection.Open();
 
-                    string username = User.Identity.Name;
+                    string username = "";
+                    if (User.Identity.Name == null)
+                    {
+                        username = "";
+                    } else
+                    {
+                        username = User.Identity.Name;
+                    }
 
                     String sql = "SELECT * FROM emails WHERE emailreceiver='"+username+"'";
                     using (SqlCommand command = new SqlCommand(sql, connection))
@@ -53,6 +60,7 @@ namespace FinalProject.Pages
             }
             catch (Exception ex)
             {
+                Console.WriteLine(ex.ToString());
             }
         }
     }
