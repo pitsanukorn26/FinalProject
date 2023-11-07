@@ -1,0 +1,45 @@
+﻿@page
+@model FinalProject.Pages.ComposeMailModel
+@{
+}
+
+<div class="text-center">
+    <h1 class="display-2">SENDING EMAIL</h1>
+</div>
+
+<style>
+    .btn-primary {
+        color: white;
+    }
+</style>
+
+<form method="post">
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">TO:</label>
+        <div class="col-sm-9">
+            <textarea class="form-control" rows="1" name="TO"></textarea>
+
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">SUBJECT:</label>
+        <div class="col-sm-9">
+            <textarea class="form-control" rows="1" name="SUBJECT"></textarea>
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">MESSAGE:</label>
+        <div class="col-sm-9">
+            <textarea class="form-control" rows="15" name="MESSAGE"></textarea>
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <div class="offset-sm-3 col-sm-3 d-grid">
+            <a class="btn btn-primary btn-sm" href="/Sending Successfully/IndexSuccess">SEND</a>
+        </div>
+        <div class="col-sm-3 d-grid">
+            <a class="btn btn-primary" href="/Index" role="button">HOME</a>
+        </div>
+    </div>
+</form>
