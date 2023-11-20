@@ -7,14 +7,14 @@
 <center><img src="images/logo.jpg" width="400" /></center>
 
 <table class="table">
-    <thread>
+    <thead>
         <tr>
             <th>From</th>
             <th>Subject</th>
             <th>Date/Time</th>
-            <th>Delete</th>
+            <th></th>
         </tr>
-    </thread>
+    </thead>
 
     <tbody>
         @foreach (var item in Model.listEmails)
@@ -22,13 +22,19 @@
             <tr>
                 <td>@item.EmailSender</td>
                 <td>
-                    @if (item.EmailIsRead.Equals("0")) {
-                        <img src="images/yellow.gif" height="10pt"> 
-                    } 
-                    <a href="ReadEmail?emailid=@item.EmailID">@item.EmailSubject</a></td>
+                    @if (item.EmailIsRead.Equals("0"))
+                    {
+                        <img src="images/yellow.gif" height="10pt">
+                    }
+                    <a>@item.EmailSubject</a>
+                </td>
                 <td>@item.EmailDate</td>
                 <td>
-                    <a class="btn btn-primary btn-sm" href="DeleteEmail?emailid=@item.EmailID">Delete</a>
+                    <!-- Updated href attribute for Read button -->
+                    <a class="btn btn-light btn-sm" asp-page="/ReadMail" asp-route-emailid="@item.EmailID" style="color:#900; font-weight:bold; margin-right: 5px;">Read</a>
+                    <form method="post" asp-page-handler="Delete" asp-route-emailId="@item.EmailID" style="display:inline;">
+                        <button type="submit" class="btn btn-light btn-sm" style="color:#900; font-weight:bold;">Delete</button>
+                    </form>
                 </td>
             </tr>
         }

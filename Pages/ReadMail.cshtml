@@ -1,0 +1,97 @@
+﻿@page "{emailid:int}"
+@model FinalProject.Pages.ReadMailModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Read Email</title>
+    <style>
+        body, html {
+            height: 100%;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #900; /* Dark red background */
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            text-align: center;
+            width: 100%;
+            max-width: 600px;
+            padding: 0 20px;
+        }
+
+        .form-group {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            margin-bottom: 40px;
+            font-size: 20px;
+        }
+
+            .form-group label {
+                text-align: right;
+                margin-right: 10px;
+                font-weight: bold;
+            }
+
+            .form-group p {
+                text-align: left;
+                border-radius: 3px;
+                margin: 0;
+                color: white;
+                word-wrap: break-word;
+            }
+
+        h1 {
+            margin-bottom: 40px;
+            font-size: 30px;
+        }
+
+        button {
+
+            padding: 10px 30px;
+            border: none;
+            border-radius: 40px;
+            cursor: pointer;
+            font-weight: bold;
+            background: white;
+            color: #900;
+        }
+
+        .error-message, .success-message {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>READING EMAIL</h1>
+        <div class="form-group">
+            <label>From:</label>
+            <p>@Model.EmailSender</p>
+        </div>
+        <div class="form-group">
+            <label>Subject:</label>
+            <p>@Model.EmailSubject</p>
+        </div>
+        <div class="form-group">
+            <label>Message:</label>
+            <p>@Model.EmailMessage</p>
+        </div>
+        <!-- Navigation buttons -->
+        <div>
+            <button type="button" class="home" onclick="location.href='/Index'">HOME</button>
+        </div>
+    </div>
+</body>
+</html>
+
