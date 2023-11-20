@@ -7,14 +7,14 @@
 <center><img src="images/logo.jpg" width="400" /></center>
 
 <table class="table">
-    <thead>
+    <thread>
         <tr>
             <th>From</th>
             <th>Subject</th>
             <th>Date/Time</th>
-            <th></th>
+            
         </tr>
-    </thead>
+    </thread>
 
     <tbody>
         @foreach (var item in Model.listEmails)
@@ -24,18 +24,12 @@
                 <td>
                     @if (item.EmailIsRead.Equals("0"))
                     {
-                        <img src="images/yellow.gif" height="10pt">
+                        <img src="images/yellow.gif" height="10px">
                     }
-                    <a>@item.EmailSubject</a>
+                    <a href="ReadMail?emailid=@item.EmailID">@item.EmailSubject</a>
                 </td>
                 <td>@item.EmailDate</td>
-                <td>
-                    <!-- Updated href attribute for Read button -->
-                    <a class="btn btn-light btn-sm" asp-page="/ReadMail" asp-route-emailid="@item.EmailID" style="color:#900; font-weight:bold; margin-right: 5px;">Read</a>
-                    <form method="post" asp-page-handler="Delete" asp-route-emailId="@item.EmailID" style="display:inline;">
-                        <button type="submit" class="btn btn-light btn-sm" style="color:#900; font-weight:bold;">Delete</button>
-                    </form>
-                </td>
+               
             </tr>
         }
     </tbody>

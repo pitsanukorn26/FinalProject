@@ -1,4 +1,4 @@
-﻿@page "{emailid:int}"
+﻿@page
 @model FinalProject.Pages.ReadMailModel
 
 @{
@@ -13,85 +13,87 @@
     <title>Read Email</title>
     <style>
         body, html {
-            height: 100%;
             margin: 0;
-            font-family: Arial, sans-serif;
-            background-color: #900; /* Dark red background */
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            font-family: 'Arial', sans-serif;
+            background-color: #f1f3f4; /* Gmail background color */
+            color: #202124; /* Gmail text color */
         }
 
         .container {
-            text-align: center;
-            width: 100%;
-            max-width: 600px;
-            padding: 0 20px;
+            max-width: 800px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            margin-top:50px;
         }
 
-        .form-group {
-            display: grid;
-            grid-template-columns: 1fr 2fr;
-            margin-bottom: 40px;
-            font-size: 20px;
+        .email-header {
+            border-bottom: 1px solid #e0e0e0;
+            padding-bottom: 15px;
+            margin-bottom: 15px;
         }
 
-            .form-group label {
-                text-align: right;
-                margin-right: 10px;
-                font-weight: bold;
-            }
-
-            .form-group p {
-                text-align: left;
-                border-radius: 3px;
-                margin: 0;
-                color: white;
-                word-wrap: break-word;
-            }
-
-        h1 {
-            margin-bottom: 40px;
-            font-size: 30px;
+        .email-title {
+            font-size: 24px;
+            font-weight: normal;
+            margin: 0;
         }
 
-        button {
+        .email-sender {
+            margin: 0;
+            color: #5f6368;
+            font-size: 14px;
+        }
 
-            padding: 10px 30px;
+        .email-body {
+            white-space: pre-wrap;
+         
+        }
+
+        .button-bar {
+            text-align: right;
+            margin-top: 20px;
+        }
+
+        .btn {
+            padding: 10px 15px;
             border: none;
-            border-radius: 40px;
+            border-radius: 4px;
             cursor: pointer;
             font-weight: bold;
-            background: white;
-            color: #900;
+            background: #1a73e8; /* Gmail button color */
+            color: white;
+            margin-left: 10px;
         }
 
-        .error-message, .success-message {
-            margin-bottom: 20px;
-        }
+            .btn:hover {
+                background: #135ab7;
+            }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>READING EMAIL</h1>
-        <div class="form-group">
-            <label>From:</label>
-            <p>@Model.EmailSender</p>
+        <div class="email-header">
+            <h2 class="email-title">@Model.EmailSubject</h2>
+            <p class="email-sender">From: @Model.EmailSender</p>
         </div>
-        <div class="form-group">
-            <label>Subject:</label>
-            <p>@Model.EmailSubject</p>
+        <div class="email-body">
+            @Model.EmailMessage
         </div>
-        <div class="form-group">
-            <label>Message:</label>
-            <p>@Model.EmailMessage</p>
-        </div>
-        <!-- Navigation buttons -->
-        <div>
-            <button type="button" class="home" onclick="location.href='/Index'">HOME</button>
+        <div class="button-bar">
+            <button class="btn" onclick="location.href='/Index'">Back to Inbox</button>
         </div>
     </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var emailBody = document.querySelector('.email-body');
+            if (emailBody) {
+                emailBody.textContent = emailBody.textContent.trim();
+            }
+        });
+    </script>
+
 </body>
 </html>
-
